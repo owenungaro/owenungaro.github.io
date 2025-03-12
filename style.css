@@ -1,0 +1,107 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Header */
+.header {
+    grid-area: header;
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    font-size: 35px;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "header header header header header header"
+        "left left middle middle right right"
+        "footer footer footer footer footer footer";
+    grid-column-gap: 10px;
+    padding: 0 5vw; /* Add padding on left & right to prevent edge touching */
+}
+
+/* Image Container */
+.left, .middle, .right {
+    padding: 10px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Grid Areas */
+.left {
+    grid-area: left;
+}
+
+.middle {
+    grid-area: middle;
+    position: relative; /* Ensures SVG stays on top */
+}
+
+.right {
+    grid-area: right;
+}
+
+/* Keyboard Images */
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.image:hover {
+    width: 110%; /* Grow but stay within padding limits */
+    transform: scale(1.05);
+}
+
+.image:not(:hover) {
+    width: 95%; /* Slight shrink to balance space */
+}
+
+/* Footer */
+.footer {
+    grid-area: footer;
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+}
+
+.overlay-svg-middle {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 0.3;
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg); /* Centers & rotates */
+    width: 150%; /* Adjust size */
+    pointer-events: none;
+    animation: textAnimation 2s ease-in-out forwards;
+    animation-play-state: paused; /* Keep animation paused by default */
+}
+
+/* Animation Keyframes */
+@keyframes textAnimation {
+    0% {
+        stroke-dashoffset: 150;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
