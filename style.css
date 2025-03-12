@@ -7,12 +7,25 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #111;
+    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 25px 25px;
+    animation: moveGrid 50s linear infinite;
+}
+
+@keyframes moveGrid {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 50px 50px;
+    }
 }
 
 /* Header */
 .header {
     grid-area: header;
-    background-color: #f1f1f1;
     padding: 20px;
     text-align: center;
     font-size: 35px;
@@ -26,7 +39,7 @@ body {
         "left left middle middle right right"
         "footer footer footer footer footer footer";
     grid-column-gap: 0.6vw;
-    padding: 0 5vw; /* Add padding on left & right to prevent edge touching */
+    padding: 0 5vw; /*padding on left and right to prevent edge touching*/
 }
 
 /* Image Container */
@@ -45,7 +58,7 @@ body {
 
 .middle {
     grid-area: middle;
-    position: relative; /* Ensures SVG stays on top */
+    position: relative; /* Ensures SVG (text) stays on top */
 }
 
 .right {
@@ -74,7 +87,6 @@ body {
 /* Footer */
 .footer {
     grid-area: footer;
-    background-color: #f1f1f1;
     text-align: center;
 }
 
@@ -87,7 +99,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg); /* Centers & rotates */
+    transform: translate(-50%, -50%) rotate(-90deg); /* Centers and rotates */
     width: 90vh; /* Adjust size */
     pointer-events: none;
     animation: textAnimation 2s ease-in-out forwards;
