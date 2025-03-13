@@ -39,11 +39,12 @@ body {
         "left left middle middle right right"
         "footer footer footer footer footer footer";
     grid-column-gap: 0.6vw;
-    padding: 0 5vw; /*padding on left and right to prevent edge touching*/
+    padding: 0 5vw;
 }
 
 /* Image Container */
 .left, .middle, .right {
+    position: relative;
     padding: 0.8vw;
     height: 95vh;
     display: flex;
@@ -54,11 +55,11 @@ body {
 /* Grid Areas */
 .left {
     grid-area: left;
+    position: relative;
 }
 
 .middle {
     grid-area: middle;
-    position: relative; /* Ensures SVG (text) stays on top */
 }
 
 .right {
@@ -76,12 +77,12 @@ body {
 
 /* Hover Effect */
 .image:hover {
-    width: 110%; /* Grow but stay within padding limits */
+    width: 110%;
     transform: scale(1.05);
 }
 
 .image:not(:hover) {
-    width: 95%; /* Slight shrink to balance space */
+    width: 95%;
 }
 
 /* Footer */
@@ -90,6 +91,35 @@ body {
     text-align: center;
 }
 
+/* ONE KEYFRAME, DIFFERENT STROKE-DASH SETTINGS PER IMAGE */
+@keyframes textAnimation {
+    0% {
+        stroke-dashoffset: var(--dash-offset);
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Left Image SVG */
+.overlay-svg-left {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 0.3;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 90vh;
+    pointer-events: none;
+    animation: textAnimation 2.5s ease-in-out forwards;
+    animation-play-state: paused;
+    --dash-offset: 200;
+}
+
+/* Middle Image SVG */
 .overlay-svg-middle {
     fill: none;
     stroke: #ffffff;
@@ -99,20 +129,28 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg); /* Centers and rotates */
-    width: 90vh; /* Adjust size */
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 90vh;
     pointer-events: none;
-    animation: textAnimation 2s ease-in-out forwards;
-    animation-play-state: paused; /* Keep animation paused by default */
+    animation: textAnimation 3s ease-in-out forwards;
+    animation-play-state: paused;
+    --dash-offset: 150;
 }
 
-/* Animation Keyframes */
-@keyframes textAnimation {
-    0% {
-        stroke-dashoffset: 150;
-    }
-    100% {
-        stroke-dashoffset: 0;
-    }
+/* Right Image SVG */
+.overlay-svg-right {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 0.3;
+    stroke-dasharray: 160;
+    stroke-dashoffset: 160;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 90vh;
+    pointer-events: none;
+    animation: textAnimation 3.5s ease-in-out forwards;
+    animation-play-state: paused;
+    --dash-offset: 160;
 }
-
