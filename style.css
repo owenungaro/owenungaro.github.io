@@ -100,57 +100,38 @@ body {
     }
 }
 
-/*Left keyboard image*/
-.overlay-svg-left {
+.overlay-svg-left, .overlay-svg-middle, .overlay-svg-right {
+    width: 80vh; /*height of SVG, try to make it so it fits within the height of the image*/
     fill: none;
     stroke: #ffffff;
     stroke-width: 0.3;
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-90deg);
-    width: 80vh; /*height of SVG, try to make it so it fits within the height of the image*/
+    position: absolute;
     pointer-events: none;
     animation: textAnimation 2.5s ease-in-out forwards;
     animation-play-state: paused;
+}
+
+/*Left keyboard image*/
+.overlay-svg-left {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
     --dash-offset: 200;
 }
 
 /*Middle keyboard image*/
 .overlay-svg-middle {
-    fill: none;
-    stroke: #ffffff;
-    stroke-width: 0.3;
     stroke-dasharray: 150;
     stroke-dashoffset: 150;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    width: 90vh;
-    pointer-events: none;
-    animation: textAnimation 3s ease-in-out forwards;
-    animation-play-state: paused;
     --dash-offset: 150;
 }
 
 /*Right keyboard image*/
 .overlay-svg-right {
-    fill: none;
-    stroke: #ffffff;
-    stroke-width: 0.3;
     stroke-dasharray: 160;
     stroke-dashoffset: 160;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    width: 90vh;
-    pointer-events: none;
-    animation: textAnimation 3.5s ease-in-out forwards;
-    animation-play-state: paused;
     --dash-offset: 160;
 }
 
