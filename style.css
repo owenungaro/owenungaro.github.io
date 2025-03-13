@@ -31,28 +31,27 @@ body {
     font-size: 35px;
 }
 
-/* Grid Layout */
 .grid-container {
     display: grid;
     grid-template-areas:
         "header header header header header header"
         "left left middle middle right right"
+        "nav nav nav nav nav nav"
         "footer footer footer footer footer footer";
     grid-column-gap: 0.6vw;
     padding: 0 5vw;
 }
 
-/* Image Container */
 .left, .middle, .right {
     position: relative;
     padding: 0.8vw;
-    height: 95vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Grid Areas */
+/* Grid Image Areas */
 .left {
     grid-area: left;
     position: relative;
@@ -75,7 +74,7 @@ body {
     transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Hover Effect */
+/* Keyboard Image Hover Effect */
 .image:hover {
     width: 110%;
     transform: scale(1.05);
@@ -91,7 +90,7 @@ body {
     text-align: center;
 }
 
-/* ONE KEYFRAME, DIFFERENT STROKE-DASH SETTINGS PER IMAGE */
+/*Keyfram animation for keyboard image hovering*/
 @keyframes textAnimation {
     0% {
         stroke-dashoffset: var(--dash-offset);
@@ -101,7 +100,7 @@ body {
     }
 }
 
-/* Left Image SVG */
+/*Left keyboard image*/
 .overlay-svg-left {
     fill: none;
     stroke: #ffffff;
@@ -119,7 +118,7 @@ body {
     --dash-offset: 200;
 }
 
-/* Middle Image SVG */
+/*Middle keyboard image*/
 .overlay-svg-middle {
     fill: none;
     stroke: #ffffff;
@@ -137,7 +136,7 @@ body {
     --dash-offset: 150;
 }
 
-/* Right Image SVG */
+/*Right keyboard image*/
 .overlay-svg-right {
     fill: none;
     stroke: #ffffff;
@@ -153,4 +152,78 @@ body {
     animation: textAnimation 3.5s ease-in-out forwards;
     animation-play-state: paused;
     --dash-offset: 160;
+}
+
+/*Navigation bar container*/
+.nav-container {
+    grid-area: nav;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+}
+
+/*Navigation buttons*/
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+    padding: 2vh 0;
+}
+
+/*Button styling*/
+.nav-button {
+    text-decoration: none;
+    color: white;
+    font-size: 2.5vh;
+    font-weight: bold;
+    border: 0.4vh solid white;
+    border-radius: 1vh;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 14vw;
+    height: 7vh;
+    text-align: center;
+}
+
+/*Button hover effect*/
+.nav-button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 2vh rgba(255, 255, 255, 0.3);
+}
+
+/*Button logo image*/
+.nav-button.logo {
+    padding: 0;
+    border: 0.4vh solid white;
+    width: 7vh;
+    height: 7vh;
+    min-width: 7vh;
+    min-height: 7vh;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Logo image styling*/
+.nav-button.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.4vh; /* Adjusted to match button */
+    transition: transform 0.3s ease-in-out;
+}
+
+/*Logo hover*/
+.nav-button.logo:hover {
+    background-color: white;
+}
+
+.nav-button.logo:hover img {
+    transform: scale(1.1);
 }
