@@ -1,30 +1,75 @@
-/* General Reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #111;
-    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), 
-                      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 25px 25px;
-    animation: moveGrid 50s linear infinite;
-}
-
-/* Header */
-.header {
-    grid-area: header;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: #111;
+  }
+  
+  /*navigation bar*/
+  nav {
+    position: sticky; /*makes it stick to the top always*/
+    top: 0;
+    background-color: #1e1e2f;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  /*columns*/
+  .container {
+    display: flex;
+    width: 100vw;
+    min-height: 200vh; /*size of columns*/
+  }
+  
+  .column {
+    width: 50vw;
     padding: 20px;
-    text-align: center;
-    font-size: 35px;
-}
-
-
-/* Footer */
-.footer {
-    grid-area: footer;
-    text-align: center;
-}
+    transition: background-color 0.3s ease;
+  }
+  
+  .left {
+    background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f); /*gradient effect*/
+    color: white;
+  }
+  
+  .right {
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+  }
+  
+  .dot-layer {
+    position: absolute; 
+    inset: 0; /*allows stretching*/
+    background-size: 10px 10px; /*SVG size*/
+    z-index: 1;
+    pointer-events: none; /*lets mouse click through SVG*/
+  }
+  
+  .base { /*base dot grid*/
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%23ccc'/%3E%3C/svg%3E");
+  }
+  
+  .hover-dark { 
+    /*second darker SVG*/
+    /*the numbers after %23 indicate darkness*/
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%23222'/%3E%3C/svg%3E");
+    opacity: 1;
+    /*Cursor mask, hides everything else not around cursor*/
+    mask-image: radial-gradient(circle at var(--x, -100px) var(--y, -100px), rgba(0, 0, 0, 1) 0%, transparent 100px);
+    -webkit-mask-image: radial-gradient(circle at var(--x, -100px) var(--y, -100px), rgba(0, 0, 0, 1) 0%, transparent 200px);
+    /*uses mask as alpha channel to control visibility*/
+    mask-mode: alpha;
+  }
+  
