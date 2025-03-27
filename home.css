@@ -10,12 +10,6 @@
     overflow-x: hidden;
     background: #111;
   }
-
-  .image {
-    display: flex;
-    position:absolute;
-
-  }
   
   /*navigation bar*/
   nav {
@@ -78,5 +72,19 @@
     -webkit-mask-image: radial-gradient(circle at var(--x, -100px) var(--y, -100px), rgba(0, 0, 0, 1) 0%, transparent 200px);
     /*uses mask as alpha channel to control visibility*/
     mask-mode: alpha;
+  }
+  
+  .image-wrapper {
+    position: absolute;
+    top: 90vh; /*Distance from top*/
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000; /*Makes sure its ontop of both columns*/
+  }
+  
+  .rotated-image {
+    transform: rotate(90deg);
+    max-width: 200vh;
+    height: auto;
   }
   
