@@ -8,7 +8,8 @@
     height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-    background: #111;
+    overflow-y: auto;
+    background: #000000;
   }
   
   /*navigation bar*/
@@ -19,20 +20,24 @@
     color: white;
     padding: 1rem;
     text-align: center;
-    z-index: 1000;
+    z-index: 3000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 1.5rem;
     letter-spacing: 1px;
   }
   
   /*columns*/
-  .container {
-    
+.container {
+    position: relative; /* Make it the positioning context */
     display: flex;
     width: 100vw;
-    min-height: 200vh; /*size of columns*/
-  }
-  
+    height: 200vh; /* or whatever height you want */
+}
+.column.left,
+.column.right {
+    flex: 1;
+    /* Add any styling you need here */
+}
   .column {
     width: 50vw;
     padding: 20px;
@@ -43,20 +48,26 @@
     background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f); /*gradient effect*/
     color: white;
   }
-  
+
   .right {
     position: relative;
     background-color: #fff;
-    overflow: hidden;
+    overflow: visible !important;
+    height: 200vh;
   }
   
   .dot-layer {
-    position: absolute; 
-    inset: 0; /*allows stretching*/
-    background-size: 10px 10px; /*SVG size*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 10px 10px;
     z-index: 1;
-    pointer-events: none; /*lets mouse click through SVG*/
+    pointer-events: none;
+    overflow: hidden; /* Prevent bleeding */
   }
+  
   
   .base { /*base dot grid*/
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%23ccc'/%3E%3C/svg%3E");
@@ -74,17 +85,18 @@
     mask-mode: alpha;
   }
   
-  .image-wrapper {
+  #owen {
     position: absolute;
-    top: 90vh; /*Distance from top*/
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2000; /*Makes sure its ontop of both columns*/
-  }
-  
-  .rotated-image {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Or a portion, like 30% */
+    background-image: url('./owenungarofin1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none; /* So it doesn't block clicks */
+    z-index: 2000;;
     transform: rotate(90deg);
-    max-width: 200vh;
-    height: auto;
-  }
-  
+}
+
