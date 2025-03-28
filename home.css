@@ -90,12 +90,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Or a portion, like 30% */
+    height: 100%;
     background-image: url('./owenungarofin1.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    pointer-events: none; /* So it doesn't block clicks */
+    pointer-events: none;
     z-index: 2000;;
     transform: rotate(90deg);
 }
