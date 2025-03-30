@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redirecting...</title>
+  <title>Stripe Code Received</title>
+</head>
+<body>
+  <h1>Authorization Code</h1>
+  <p id="code"></p>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
+
     if (code) {
-      // Automatically open the app with the authorization code
-      window.location.href = "quackhackproject://stripe/oauth/callback?code=" + code;
+      document.getElementById("code").innerText = code;
     } else {
-      document.write("<p>No cose found.</p>");
+      document.getElementById("code").innerText = "No code found.";
     }
   </script>
-</head>
-<body>
-  <p>Redirecting to the app...</p>
 </body>
 </html>
