@@ -45,6 +45,18 @@ fetch('/repos.json')
       </div>
     `;
 
-    container.innerHTML = header + `<div class="repo-list">${list}</div>` + footer;
-    document.querySelector('.right').appendChild(container);
-  });
+    container.innerHTML = `
+      <div class="corner-img top-right"></div>
+      ${header}
+      <div class="repo-list">${list}</div>
+      ${footer}
+    `;
+      document.querySelector('.right').appendChild(container);
+  
+      setInterval(() => {
+        const topLeft = document.querySelector('.corner-img.top-right');
+        if (topLeft) {
+          topLeft.classList.toggle('alt-state');
+        }
+      }, 4000);      
+});
