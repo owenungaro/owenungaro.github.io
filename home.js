@@ -60,3 +60,50 @@ fetch('/repos.json')
         }
       }, 4000);      
 });
+
+fetch('/nowplaying.json')
+  .then(res => res.json())
+  .then(data => {
+    if (!data.playing) return;
+
+    const widget = document.createElement('div');
+    widget.classList.add('spotify-widget');
+
+    widget.innerHTML = `
+      <div class="spotify-header">
+        <img src="/images/assets/spotify.svg" alt="Spotify" class="spotify-logo" />
+        <span>Now Playing</span>
+      </div>
+      <div class="spotify-body">
+      <img class="spotify-album-art" src="${data.image}" alt="Album Art">
+      <div class="spotify-track-info">
+        <a href="${data.url}" class="spotify-track-name" target="_blank">${data.name}</a>
+        <div class="spotify-artist">${data.artist}</div>
+        <div class="spotify-album">${data.album}</div>
+        <div class="spotify-extra">
+          <span>${data.device}</span> • 
+          <span>${data.progress} / ${data.duration}</span>
+        </div>
+      </div>
+    </div>
+
+    `;
+
+    const githubWidget = document.querySelector('.github-widget');
+    function waitForGitHubWidget(callback) {
+      const check = setInterval(() => {
+        const githubWidget = document.querySelector('.github-widget');
+        if (githubWidget) {
+          clearInterval(check);
+          callback(githubWidget);
+        }
+      }, 100);
+    }
+    
+    waitForGitHubWidget(githubWidget => {
+      githubWidget.insertAdjacentElement('afterend', widget);
+    });
+    
+  })
+  .catch(err => console.error("Spotify widget error:", err));
+

@@ -154,7 +154,7 @@ nav {
   border: 1px solid #30363d;
   border-radius: 8px;
   font-family: 'Segoe UI', sans-serif;
-  margin: 45vh auto;
+  margin: 15vh auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   z-index: 2;
   position: relative;
@@ -249,4 +249,104 @@ nav {
 .corner-img.top-right.alt-state {
   background-image: url('./images/silver/cross2.png');
   transform: translate(40%, -40%) rotate(11deg) scale(1);
+}
+
+.spotify-widget {
+  width: 100%;
+  max-width: 350px;
+  background-color: #1db954;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  margin: 10px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  position: relative;
+}
+
+.spotify-header,
+.spotify-footer {
+  background: linear-gradient(to right, #2a2a2a, #1e1e1e);
+  padding: 8px 12px;
+  color: #eaeaea;
+  font-weight: 500;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.spotify-listen-link {
+  color: #1db954;
+  background-color: #f0f0f0;
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.spotify-listen-link:hover {
+  background-color: #d3ffd6;
+  color: #000;
+}
+
+
+.spotify-logo {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.spotify-body {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #1db954;
+}
+
+.spotify-album-art {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.spotify-track-info {
+  flex: 1;
+}
+
+.spotify-track-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.spotify-track-name:hover {
+  color: #d1ffd8;
+}
+
+
+.spotify-artist {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+.spotify-album {
+  font-size: 0.7rem;
+  color: #e0ffe9;
+  margin-top: 2px;
+}
+
+.spotify-extra {
+  font-size: 0.65rem;
+  color: #caffdb;
+  margin-top: 4px;
+  opacity: 0.8;
 }
