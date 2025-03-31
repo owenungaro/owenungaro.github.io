@@ -99,62 +99,51 @@
     text-align: left;
   }
     
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
+  .left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: -70vh;
+  }
   
-  /* #owen {
-    position: absolute;
-    top: 0;
-    left: -0.85vw;
-    width: 100%;
-    height: 100%;
-    background-image: url('./images/test13.png');
+  #img1 {
+    width: 50%;
+    height: auto;
+    aspect-ratio: 1/1;
+    background-image: url('./images/silver/anomaly1.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    margin-bottom: 20px;
     pointer-events: none;
-    z-index: 2000;;
-    transform: rotate(90deg);
-}
-
-#img1 {
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  background-image: url('./images/anomaly1.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  pointer-events: none;
-  z-index: 2000;;
-}
-
-#img2 {
-  top: 50vh;
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  background-image: url('./images/crown.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  pointer-events: none;
-  z-index: 2000;;
-}
-
-#img3 {
-  top: 50vh;
-  left: 25vw;
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  background-image: url('./images/cross3.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  pointer-events: none;
-  z-index: 2000;;
-}
-
-#img4 {
+  }
   
-} */
+  #svg-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .svg-icon {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+  
+  #github { background-image: url('/images/assets/github.svg'); }
+  #linkedin { background-image: url('/images/assets/linkedin.svg'); }
+  #instagram { background-image: url('/images/assets/instagram.svg'); }
+  #spotify { background-image: url('/images/assets/spotify.svg'); }
+  
