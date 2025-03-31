@@ -47,6 +47,9 @@
   .left {
     background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f); /*gradient effect*/
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .right {
@@ -84,14 +87,27 @@
     /*uses mask as alpha channel to control visibility*/
     mask-mode: alpha;
   }
+
+  .intro {
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+    color: #ffffff;
+    line-height: 1.8;
+    max-width: 300px;
+    background: transparent;
+    padding: 0 10px;
+    text-align: left;
+  }
+    
   
-  #owen {
+  
+  /* #owen {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -0.85vw;
     width: 100%;
     height: 100%;
-    background-image: url('./owenungarofin1.png');
+    background-image: url('./images/test13.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -100,3 +116,45 @@
     transform: rotate(90deg);
 }
 
+#img1 {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  background-image: url('./images/anomaly1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 2000;;
+}
+
+#img2 {
+  top: 50vh;
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  background-image: url('./images/crown.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 2000;;
+}
+
+#img3 {
+  top: 50vh;
+  left: 25vw;
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  background-image: url('./images/cross3.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: 2000;;
+}
+
+#img4 {
+  
+} */
