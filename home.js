@@ -1,22 +1,20 @@
 const rightColumn = document.querySelector('.right');
 const hoverDarkLayer = rightColumn.querySelector('.hover-dark');
 
-rightColumn.addEventListener('mousemove', (e) => { /*mouse move inside column*/
-  const rect = rightColumn.getBoundingClientRect(); /*bound box*/
-  /*x and y relative to element*/
+rightColumn.addEventListener('mousemove', (e) => {
+  const rect = rightColumn.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
-  /*updates css variables to mask*/
   hoverDarkLayer.style.setProperty('--x', `${x}px`);
   hoverDarkLayer.style.setProperty('--y', `${y}px`);
 });
 
-/*when the mouse moves, hides the effect*/
 rightColumn.addEventListener('mouseleave', () => {
   hoverDarkLayer.style.setProperty('--x', `-1000px`);
   hoverDarkLayer.style.setProperty('--y', `-1000px`);
 });
 
+// GitHub Widget
 fetch('/repos.json')
   .then(res => res.json())
   .then(repos => {
@@ -51,17 +49,19 @@ fetch('/repos.json')
       <div class="repo-list">${list}</div>
       ${footer}
     `;
-      document.querySelector('.right').appendChild(container);
-  
-      setInterval(() => {
-        const topLeft = document.querySelector('.corner-img.top-right');
-        if (topLeft) {
-          topLeft.classList.toggle('alt-state');
-        }
-      }, 4000);      
-});
+    
+    document.querySelector('.right .widget-stack').appendChild(container);
 
-// === Spotify Widget ===
+    setInterval(() => {
+      const topLeft = document.querySelector('.corner-img.top-right');
+      if (topLeft) {
+        topLeft.classList.toggle('alt-state');
+      }
+    }, 4000);
+  });
+
+
+// Spotify Widget
 const spotifyWidget = document.createElement('div');
 spotifyWidget.classList.add('spotify-widget');
 spotifyWidget.innerHTML = `
@@ -71,26 +71,44 @@ spotifyWidget.innerHTML = `
     <div class="track-info">
       <div class="track-title" id="trackTitle">Loading...</div>
       <div class="track-artist" id="trackArtist"></div>
+      <div class="track-meta">
+        <span id="trackElapsed">0:00</span>
+        <span id="trackDuration">0:00</span>
+      </div>
+      <div class="progress-bar"><div class="progress-bar-fill" id="trackProgress"></div></div>
     </div>
   </div>
 `;
-document.querySelector('.right').appendChild(spotifyWidget);
 
-// Replace this with your future backend endpoint:
-fetch('https://spotify-now-playing.oungaro.workers.dev')
-  .then(res => res.json())
-  .then(data => {
-    if (!data || !data.is_playing) {
-      document.getElementById('trackTitle').textContent = 'Nothing playing';
+document.querySelector('.widget-stack').appendChild(spotifyWidget);
+
+// Refresh Spotify widget every 30 seconds
+function updateSpotifyWidget() {
+  fetch('https://spotify-now-playing.oungaro.workers.dev')
+    .then(res => res.json())
+    .then(data => {
+      const albumArt = document.getElementById('albumArt');
+      const title = document.getElementById('trackTitle');
+      const artist = document.getElementById('trackArtist');
+
+      if (!data || !data.is_playing) {
+        title.textContent = 'Nothing playing';
+        artist.textContent = '';
+        albumArt.style.backgroundImage = '';
+        albumArt.style.animationPlayState = 'paused';
+        return;
+      }
+
+      albumArt.style.backgroundImage = `url('${data.album_image_url}')`;
+      albumArt.style.animationPlayState = 'running';
+      title.textContent = data.title;
+      artist.textContent = data.artist;
+    })
+    .catch(() => {
+      document.getElementById('trackTitle').textContent = 'Failed to load';
       document.getElementById('trackArtist').textContent = '';
-      return;
-    }
+    });
+}
 
-    document.getElementById('albumArt').style.backgroundImage = `url('${data.album_image_url}')`;
-    document.getElementById('trackTitle').textContent = data.title;
-    document.getElementById('trackArtist').textContent = data.artist;
-  })
-  .catch(() => {
-    document.getElementById('trackTitle').textContent = 'Failed to load';
-    document.getElementById('trackArtist').textContent = '';
-  });
+updateSpotifyWidget(); //Initial
+setInterval(updateSpotifyWidget, 5000); //Timer

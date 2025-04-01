@@ -250,3 +250,110 @@ nav {
   background-image: url('./images/silver/cross2.png');
   transform: translate(40%, -40%) rotate(11deg) scale(1);
 }
+
+.spotify-widget {
+  position: relative; /* Create a stacking context */
+  z-index: 10;        /* Make sure it's above the svg icons */
+  width: 100%;
+  max-width: 350px;
+  background-color: #121212;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 4vh auto;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+
+
+.spotify-header {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1DB954;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+.spotify-header::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.spotify-body {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.album-art {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  animation: rotateAlbum 6s linear infinite paused;
+  flex-shrink: 0;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.track-title {
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-size: 0.85rem;
+  color: #bbb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-meta {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar {
+  height: 4px;
+  width: 100%;
+  background-color: #2a2a2a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #1DB954;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+@keyframes rotateAlbum {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

@@ -34,8 +34,8 @@ export default {
 	  },
 	});
   
-	const text = await res.text(); // grab the full body
-	console.log('Spotify response:', text); // log it for wrangler tail
+	const text = await res.text();
+	console.log('Spotify response:', text);
   
 	if (res.status === 204 || res.status > 400) {
 	  return { is_playing: false };
@@ -47,6 +47,8 @@ export default {
 	  title: data.item?.name || 'Unknown',
 	  artist: data.item?.artists.map(a => a.name).join(', ') || '',
 	  album_image_url: data.item?.album.images[0].url || '',
+	  duration_ms: data.item?.duration_ms || 0,
+	  progress_ms: data.progress_ms || 0
 	};
   }
   
