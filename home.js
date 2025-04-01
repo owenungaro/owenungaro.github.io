@@ -82,7 +82,31 @@ spotifyWidget.innerHTML = `
 
 document.querySelector('.widget-stack').appendChild(spotifyWidget);
 
-// Refresh Spotify widget every 30 seconds
+let currentTrack = null;
+let lastUpdateTime = null;
+
+function formatTime(ms) {
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function renderProgress() {
+  if (!currentTrack || !currentTrack.is_playing) return;
+
+  const now = Date.now();
+  const elapsed = Math.min(currentTrack.progress_ms + (now - lastUpdateTime), currentTrack.duration_ms);
+
+  document.getElementById('trackElapsed').textContent = formatTime(elapsed);
+  document.getElementById('trackDuration').textContent = formatTime(currentTrack.duration_ms);
+
+  const progressPercent = (elapsed / currentTrack.duration_ms) * 100;
+  document.getElementById('trackProgress').style.width = `${progressPercent}%`;
+
+  requestAnimationFrame(renderProgress);
+}
+
 function updateSpotifyWidget() {
   fetch('https://spotify-now-playing.oungaro.workers.dev')
     .then(res => res.json())
@@ -90,19 +114,34 @@ function updateSpotifyWidget() {
       const albumArt = document.getElementById('albumArt');
       const title = document.getElementById('trackTitle');
       const artist = document.getElementById('trackArtist');
+      const elapsedEl = document.getElementById('trackElapsed');
+      const durationEl = document.getElementById('trackDuration');
+      const progressBar = document.getElementById('trackProgress');
 
       if (!data || !data.is_playing) {
         title.textContent = 'Nothing playing';
         artist.textContent = '';
+        elapsedEl.textContent = '';
+        durationEl.textContent = '';
+        progressBar.style.width = '0%';
         albumArt.style.backgroundImage = '';
-        albumArt.style.animationPlayState = 'paused';
+        currentTrack = null;
         return;
       }
 
       albumArt.style.backgroundImage = `url('${data.album_image_url}')`;
-      albumArt.style.animationPlayState = 'running';
       title.textContent = data.title;
       artist.textContent = data.artist;
+
+      // Store track data and start animation
+      currentTrack = {
+        ...data,
+        progress_ms: data.progress_ms,
+        duration_ms: data.duration_ms
+      };
+      lastUpdateTime = Date.now();
+
+      renderProgress();
     })
     .catch(() => {
       document.getElementById('trackTitle').textContent = 'Failed to load';
