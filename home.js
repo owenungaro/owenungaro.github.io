@@ -60,3 +60,37 @@ fetch('/repos.json')
         }
       }, 4000);      
 });
+
+// === Spotify Widget ===
+const spotifyWidget = document.createElement('div');
+spotifyWidget.classList.add('spotify-widget');
+spotifyWidget.innerHTML = `
+  <div class="spotify-header">Now Playing</div>
+  <div class="spotify-body">
+    <div class="album-art" id="albumArt" style="background-image: url('');"></div>
+    <div class="track-info">
+      <div class="track-title" id="trackTitle">Loading...</div>
+      <div class="track-artist" id="trackArtist"></div>
+    </div>
+  </div>
+`;
+document.querySelector('.right').appendChild(spotifyWidget);
+
+// Replace this with your future backend endpoint:
+fetch('https://spotify-now-playing.oungaro.workers.dev')
+  .then(res => res.json())
+  .then(data => {
+    if (!data || !data.is_playing) {
+      document.getElementById('trackTitle').textContent = 'Nothing playing';
+      document.getElementById('trackArtist').textContent = '';
+      return;
+    }
+
+    document.getElementById('albumArt').style.backgroundImage = `url('${data.album_image_url}')`;
+    document.getElementById('trackTitle').textContent = data.title;
+    document.getElementById('trackArtist').textContent = data.artist;
+  })
+  .catch(() => {
+    document.getElementById('trackTitle').textContent = 'Failed to load';
+    document.getElementById('trackArtist').textContent = '';
+  });
