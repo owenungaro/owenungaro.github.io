@@ -50,7 +50,9 @@ fetch('/repos.json')
       ${footer}
     `;
     
-    document.querySelector('.right .widget-stack').appendChild(container);
+    const widgetStack = document.querySelector('.right .widget-stack');
+    widgetStack.appendChild(container);
+    widgetStack.appendChild(spotifyWidget); // <- append Spotify after GitHub
 
     setInterval(() => {
       const topLeft = document.querySelector('.corner-img.top-right');
@@ -80,7 +82,8 @@ spotifyWidget.innerHTML = `
   </div>
 `;
 
-document.querySelector('.widget-stack').appendChild(spotifyWidget);
+const widgetStack = document.querySelector('.widget-stack');
+widgetStack.appendChild(spotifyWidget);
 
 let currentTrack = null;
 let lastUpdateTime = null;

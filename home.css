@@ -361,7 +361,7 @@ nav {
   transition: opacity 0.3s ease;
 }
 
-@keyframes rotateAlbum {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.widget-stack > * {
+  margin-top: 5rem;
+  margin-bottom: 0.75rem;
 }
