@@ -103,8 +103,6 @@ function renderProgress() {
 
   const progressPercent = (elapsed / currentTrack.duration_ms) * 100;
   document.getElementById('trackProgress').style.width = `${progressPercent}%`;
-
-  requestAnimationFrame(renderProgress);
 }
 
 function updateSpotifyWidget() {
@@ -121,10 +119,14 @@ function updateSpotifyWidget() {
       if (!data || !data.is_playing) {
         title.textContent = 'Nothing playing';
         artist.textContent = '';
-        elapsedEl.textContent = '';
-        durationEl.textContent = '';
-        progressBar.style.width = '0%';
-        albumArt.style.backgroundImage = '';
+        elapsedEl.textContent = '—';
+        durationEl.textContent = '—';
+        progressBar.style.opacity = '0';
+        albumArt.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg')";
+        albumArt.style.backgroundSize = '60%';
+        albumArt.style.backgroundColor = '#282828';
+        albumArt.style.backgroundRepeat = 'no-repeat';
+        albumArt.style.backgroundPosition = 'center';
         currentTrack = null;
         return;
       }
@@ -132,6 +134,7 @@ function updateSpotifyWidget() {
       albumArt.style.backgroundImage = `url('${data.album_image_url}')`;
       title.textContent = data.title;
       artist.textContent = data.artist;
+      progressBar.style.opacity = '1';
 
       // Store track data and start animation
       currentTrack = {
@@ -149,5 +152,12 @@ function updateSpotifyWidget() {
     });
 }
 
-updateSpotifyWidget(); //Initial
-setInterval(updateSpotifyWidget, 5000); //Timer
+function loop() {
+  renderProgress();
+  requestAnimationFrame(loop);
+}
+
+updateSpotifyWidget(); // Initial data load
+setInterval(updateSpotifyWidget, 5000); // Refresh song info every 5 sec
+requestAnimationFrame(loop); // Start animation loop
+

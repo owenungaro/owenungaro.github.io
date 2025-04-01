@@ -252,8 +252,8 @@ nav {
 }
 
 .spotify-widget {
-  position: relative; /* Create a stacking context */
-  z-index: 10;        /* Make sure it's above the svg icons */
+  position: relative;
+  z-index: 10; 
   width: 100%;
   max-width: 350px;
   background-color: #121212;
@@ -267,8 +267,6 @@ nav {
   gap: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
-
-
 
 .spotify-header {
   display: flex;
@@ -351,6 +349,16 @@ nav {
   background-color: #1DB954;
   width: 0%;
   transition: width 0.3s ease;
+}
+
+.progress-bar {
+  height: 4px;
+  width: 100%;
+  background-color: #2a2a2a;
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 @keyframes rotateAlbum {
