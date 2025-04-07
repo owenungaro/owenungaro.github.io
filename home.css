@@ -398,3 +398,15 @@ nav {
   background-color: #2a2a3a;
   color: #58a6ff;
 }
+
+.nav-logo img {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.nav-logo img:hover {
+  transform: scale(1.3);
+}
