@@ -18,11 +18,11 @@ nav {
   top: 0;
   background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f);
   color: white;
-  padding: 0.6rem;
+  padding: 1.2vh 0;
   text-align: center;
   z-index: 3000;
-  font-size: 1rem;
-  letter-spacing: 1px;
+  font-size: 1vw;
+  letter-spacing: 0.1vw;
 }
 
 .container {
@@ -369,19 +369,20 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0 1vw;
 }
 
 .nav-logo img {
-  height: 32px;
-  width: 32px;
+  height: 2.5vw;
+  width: 2.5vw;
   object-fit: contain;
   vertical-align: middle;
+  transition: transform 0.2s ease;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2vw;
   justify-content: center;
   flex: 1;
 }
@@ -389,22 +390,14 @@ nav {
 .nav-links a {
   color: #ffffff;
   text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
+  padding: 0.7vh 1vw;
+  border-radius: 0.5vw;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .nav-links a:hover {
   background-color: #2a2a3a;
   color: #58a6ff;
-}
-
-.nav-logo img {
-  height: 32px;
-  width: 32px;
-  object-fit: contain;
-  vertical-align: middle;
-  transition: transform 0.2s ease;
 }
 
 .nav-logo img:hover {
