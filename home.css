@@ -386,7 +386,6 @@ nav {
 }
 
 .nav-links {
-  display: flex;
   gap: 2vw;
   justify-content: center;
   flex: 1;
