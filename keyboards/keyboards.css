@@ -41,6 +41,8 @@ nav {
     padding: 0 2rem;
   }
   
+  
+  
   .nav-logo img {
     height: 32px;
     width: 32px;
@@ -50,10 +52,11 @@ nav {
   
   .nav-links {
     display: flex;
-    gap: 2rem;
     justify-content: center;
+    gap: 2rem;
     flex: 1;
   }
+  
   
   .nav-links a {
     color: #ffffff;
