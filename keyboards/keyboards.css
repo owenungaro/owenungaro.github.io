@@ -41,8 +41,6 @@ nav {
     padding: 0 2rem;
   }
   
-  
-  
   .nav-logo img {
     height: 32px;
     width: 32px;
@@ -83,40 +81,10 @@ nav {
     transform: scale(1.3);
   }
 
-.grid-container {
-    display: grid;
-    grid-template-areas:
-        "header header header header header header"
-        "left left middle middle right right"
-        "nav nav nav nav nav nav"
-        "footer footer footer footer footer footer";
-    grid-column-gap: 0.6vw;
-    padding: 0 5vw;
-}
-
-.left, .middle, .right {
-    position: relative;
-    padding: 0.8vw;
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Grid Image Areas */
-.left {
-    grid-area: left;
-    position: relative;
-}
-
-.middle {
-    grid-area: middle;
-}
-
-.right {
-    grid-area: right;
-}
-
+  .left, .middle, .right {
+    all: unset; /* clear previous styles */
+  }
+  
 /* Keyboard Images */
 .image {
     width: 100%;
@@ -138,7 +106,6 @@ nav {
 
 /* Footer */
 .footer {
-    grid-area: footer;
     text-align: center;
 }
 
@@ -213,3 +180,22 @@ nav {
     mask-mode: alpha;
   }
   
+  .keyboard-section {
+    padding: 0 5vw;
+  }
+  
+  .keyboard-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6vw;
+  }
+
+  .keyboard-col {
+    flex: 1;
+    position: relative;
+    padding: 0.8vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

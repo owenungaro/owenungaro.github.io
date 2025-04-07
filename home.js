@@ -164,3 +164,19 @@ updateSpotifyWidget(); // Initial data load
 setInterval(updateSpotifyWidget, 5000); // Refresh song info every 5 sec
 requestAnimationFrame(loop); // Start animation loop
 
+function adjustContainerHeight() {
+  const widgetStack = document.querySelector('.widget-stack');
+  const container = document.querySelector('.container');
+  
+  if (spotifyWidget && container) {
+    const widgetHeight = widgetStack.scrollHeight;
+    const buffer = 100; // adjust as needed
+    container.style.height = `${widgetHeight + buffer}px`;
+  }
+}
+
+window.addEventListener('load', () => {
+  setTimeout(adjustContainerHeight, 1000); // Delay to ensure widgets are loaded
+});
+
+window.addEventListener('resize', adjustContainerHeight);
