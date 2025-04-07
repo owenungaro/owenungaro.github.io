@@ -125,14 +125,16 @@ function updateSpotifyWidget() {
         elapsedEl.textContent = '—';
         durationEl.textContent = '—';
         progressBar.style.opacity = '0';
-        albumArt.innerHTML = `<img src="${data.album_image_url}" alt="album art" class="album-img">`;
-        albumArt.style.backgroundSize = '60%';
-        albumArt.style.backgroundColor = '#282828';
-        albumArt.style.backgroundRepeat = 'no-repeat';
-        albumArt.style.backgroundPosition = 'center';
+      
+        // ❗ Clear album art
+        albumArt.innerHTML = '';
+        albumArt.style.backgroundImage = '';
+        albumArt.style.backgroundColor = 'transparent';
+      
         currentTrack = null;
         return;
       }
+      
 
       albumArt.style.backgroundImage = `url('${data.album_image_url}')`;
       title.textContent = data.title;
