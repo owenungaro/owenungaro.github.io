@@ -367,8 +367,8 @@ nav {
 }
 
 .widget-stack > * {
-  margin-top: 5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 10vh;
+  margin-bottom: 0.75vh;
 }
 
 .navbar {
