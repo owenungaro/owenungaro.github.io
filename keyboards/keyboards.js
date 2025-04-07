@@ -1,3 +1,17 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const hoverDarkLayer = document.querySelector('.hover-dark');
+  
+    document.body.addEventListener('mousemove', (e) => {
+      hoverDarkLayer.style.setProperty('--x', `${e.clientX}px`);
+      hoverDarkLayer.style.setProperty('--y', `${e.clientY}px`);
+    });
+  
+    document.body.addEventListener('mouseleave', () => {
+      hoverDarkLayer.style.setProperty('--x', `-1000px`);
+      hoverDarkLayer.style.setProperty('--y', `-1000px`);
+    });
+  });  
+
 document.addEventListener("DOMContentLoaded", function () {
     function setupAnimation(imageClass, svgClass) {
         const svgText = document.querySelector(svgClass);
