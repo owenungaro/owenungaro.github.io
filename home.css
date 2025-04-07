@@ -43,6 +43,10 @@ nav {
   box-sizing: border-box;
 }
 
+.column.left {
+  justify-content: space-between;
+}
+
 .column {
   width: 50vw;
   padding: 20px;
@@ -50,12 +54,14 @@ nav {
 }
 
 .left {
-  background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f); /*gradient effect*/
-  color: white;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f);
+  color: white;
 }
+
 
 .right {
   position: relative;
@@ -422,4 +428,12 @@ nav {
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.footer-note {
+  align-self: flex-start;
+  margin-left: 0vw;
+  margin-bottom: 0vh;
+  font-size: 0.9vw;
+  color: #777;
 }
