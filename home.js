@@ -125,7 +125,7 @@ function updateSpotifyWidget() {
         elapsedEl.textContent = '—';
         durationEl.textContent = '—';
         progressBar.style.opacity = '0';
-        albumArt.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg')";
+        albumArt.innerHTML = `<img src="${data.album_image_url}" alt="album art" class="album-img">`;
         albumArt.style.backgroundSize = '60%';
         albumArt.style.backgroundColor = '#282828';
         albumArt.style.backgroundRepeat = 'no-repeat';
