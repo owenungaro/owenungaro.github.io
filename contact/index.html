@@ -34,5 +34,13 @@
     </div>
   </section>
 
+  <script>
+    document.querySelector('.contact-form').addEventListener('submit', function () {
+      setTimeout(() => {
+        this.reset();
+      }, 100);
+    });
+  </script>
+
 </body>
 </html>
