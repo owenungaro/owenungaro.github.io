@@ -61,57 +61,54 @@ nav {
   .contact-section {
     background-color: #101010;
     color: white;
-    padding: 5vh 2vw;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
   }
   
   .contact-container {
-    max-width: 600px;
+    max-width: 50vw;
     width: 100%;
     text-align: center;
   }
   
   .contact-container h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
+    font-size: 3vw;
+    margin-bottom: 2vh;
   }
   
   .contact-container p {
-    font-size: 1.1em;
-    margin-bottom: 2em;
+    font-size: 1.3vw;
+    margin-bottom: 4vh;
     color: #ccc;
   }
   
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.2em;
+    gap: 2.5vh;
   }
   
   .contact-form input,
   .contact-form textarea {
-    padding: 1em;
+    padding: 2vh 2vw;
     border: none;
-    border-radius: 0.4em;
-    font-size: 1em;
+    border-radius: 0.6vw;
+    font-size: 1.2vw;
     background-color: #1e1e1e;
     color: white;
     resize: none;
   }
   
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder {
-    color: #888;
-  }
-  
   .contact-form button {
-    padding: 1em;
+    padding: 2vh 2vw;
     background-color: #2a2a3a;
     color: #58a6ff;
-    font-size: 1em;
+    font-size: 1.2vw;
     border: none;
-    border-radius: 0.4em;
+    border-radius: 0.6vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -119,6 +116,7 @@ nav {
   .contact-form button:hover {
     background-color: #3a3a4a;
   }
+  
   
 .contact-form input,
 .contact-form textarea,
