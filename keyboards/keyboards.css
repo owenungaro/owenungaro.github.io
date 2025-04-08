@@ -12,7 +12,6 @@ body {
     position: relative;
 }
 
-
 @keyframes moveGrid {
     0% {
         background-position: 0 0;
