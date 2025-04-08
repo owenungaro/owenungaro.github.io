@@ -123,3 +123,20 @@ nav {
 .contact-form button {
   font-family: 'Poppins', sans-serif;
 }
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #58a6ff;
+}
+
+.input-error {
+  outline: 2px solid #ff5e5e !important;
+  background-color: #1a0e0e;
+  transition: outline 0.2s ease, background-color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #888;
+  transition: color 0.3s ease;
+}

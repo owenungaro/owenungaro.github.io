@@ -25,7 +25,7 @@
     <div class="contact-container">
       <h1>get in touch</h1>
       <p>let's connect.</p>
-      <form class="contact-form" action="https://formspree.io/f/manelrpn" method="POST">
+      <form class="contact-form" action="https://formspree.io/f/manelrpn" method="POST" novalidate>
         <input type="text" name="name" placeholder="your name" required />
         <input type="email" name="email" placeholder="your email" required />
         <textarea name="message" rows="6" placeholder="your message" required></textarea>
@@ -35,9 +35,36 @@
   </section>
 
   <script>
-    document.querySelector('.contact-form').addEventListener('submit', function () {
+    const form = document.querySelector('.contact-form');
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('input-error');
+        input.placeholder = input.dataset.originalPlaceholder || '';
+      });
+
+      input.dataset.originalPlaceholder = input.placeholder;
+    });
+
+    form.addEventListener('submit', function (e) {
+      let hasError = false;
+
+      inputs.forEach(input => {
+        if(!input.value.trim()) {
+          hasError = true;
+          input.classList.add('input-error');
+          input.placeholder = 'This field is required';
+        }
+      });
+
+      if(hasError) {
+        e.preventDefault();
+        return;
+      }
+
       setTimeout(() => {
-        this.reset();
+        form.reset();
       }, 100);
     });
   </script>
