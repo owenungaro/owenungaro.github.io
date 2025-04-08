@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ou projects</title>
+    <link rel="stylesheet" href="projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../nav.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("../nav.html");
+      });
+    </script>
+  
+    <div class="projects-page">
+      <div class="dot-layer base"></div>
+      <div class="dot-layer hover-dark"></div>
+  
+      <div class="projects-grid">
+  
+        <div class="project-card">
+          <h2>Project Title One</h2>
+          <p>Short description about this project and what it accomplishes.</p>
+          <a href="#">View More →</a>
+        </div>
+  
+        <div class="project-card">
+          <h2>Project Title Two</h2>
+          <p>Another description, maybe with links to GitHub or a live demo.</p>
+          <a href="#">Check it out →</a>
+        </div>
+  
+        <div class="project-card">
+          <h2>Project Title Three</h2>
+          <p>This card uses the dot grid background to look visually consistent.</p>
+          <a href="#">Demo →</a>
+        </div>
+  
+      </div>
+    </div>
+  </body>    
+</html>
