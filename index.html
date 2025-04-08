@@ -7,25 +7,16 @@
   <link rel="stylesheet" href="home.css">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="../nav.css" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-    <nav>
-      <div class="navbar">
-        <div class="nav-logo">
-          <a href="/">
-            <img src="./images/silver/crown.png" alt="home" />
-          </a>
-        </div>
-        <div class="nav-links">
-          <a href="/projects">projects</a>
-          <a href="/resume">resume</a>
-          <a href="/keyboards">keyboards</a>
-          <a href="/blog">blog</a>
-          <a href="/contact">contact</a>
-        </div>
-      </div>          
-    </nav>
+  <div id="nav-placeholder"></div>
+    <script>
+        $(function(){
+        $("#nav-placeholder").load("../nav.html");
+        });
+    </script>
     <div class="container">
       <div class="column left">
         <div class="left-content">

@@ -5,24 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ou resume</title>
     <link rel="stylesheet" href="resume.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="../nav.css" />
 </head>
 <body>
-    <nav>
-        <div class="navbar">
-          <div class="nav-logo">
-            <a href="/">
-              <img src="../images/silver/crown.png" alt="home" />
-            </a>
-          </div>
-          <div class="nav-links">
-            <a href="/projects">projects</a>
-            <a href="/resume">resume</a>
-            <a href="/keyboards">keyboards</a>
-            <a href="/blog">blog</a>
-            <a href="/contact">contact</a>
-          </div>
-        </div>          
-      </nav>
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("../nav.html");
+    });
+  </script>
   <embed src="resume.pdf" alt="resume" height="100%" width="100%">
 </body>
 </html>
