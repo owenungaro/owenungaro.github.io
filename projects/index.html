@@ -1,53 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ou projects</title>
-    <link rel="stylesheet" href="projects.css">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../nav.css" />
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <style>
-      #nav-placeholder {
-        display: contents;
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ou projects</title>
+
+  <link rel="stylesheet" href="projects.css" />
+  <link rel="stylesheet" href="../nav.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  <style>#nav-placeholder { display: contents; }</style>
 </head>
 <body>
-    <div id="nav-placeholder"></div>
-    <script>
-      $(function () {
-        $("#nav-placeholder").load("../nav.html");
-      });
-    </script>
-  
-    <div class="projects-page">
-      <div class="dot-layer base"></div>
-      <div class="dot-layer hover-dark"></div>
-  
-      <div class="projects-grid">
-  
-        <div class="project-card">
-          <h2>Project Title One</h2>
-          <p>Short description about this project and what it accomplishes.</p>
-          <a href="#">View More →</a>
-        </div>
-  
-        <div class="project-card">
-          <h2>Project Title Two</h2>
-          <p>Another description, maybe with links to GitHub or a live demo.</p>
-          <a href="#">Check it out →</a>
-        </div>
-  
-        <div class="project-card">
-          <h2>Project Title Three</h2>
-          <p>This card uses the dot grid background to look visually consistent.</p>
-          <a href="#">Demo →</a>
-        </div>
-  
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("../nav.html");
+    });
+  </script>
+
+  <div class="projects-wrapper" id="projects-area">
+    <div class="dot-layer base"></div>
+    <div class="dot-layer hover-dark"></div>
+
+    <div class="projects-header">
+      <h1>projects</h1>
+      <p>a showcase of the things i've made.</p>
+    </div>
+
+    <section class="projects-grid">
+      <div class="project-card">
+        <h2>QuackTask</h2>
+        <p>Canvas → Google Tasks Chrome Extension</p>
+        <a href="#">View project</a>
+      </div>
+      <div class="project-card">
+        <h2>Spotify Widget</h2>
+        <p>Live now-playing song widget</p>
+        <a href="#">Preview</a>
+      </div>
+      <div class="project-card">
+        <h2>SimU</h2>
+        <p>SimCity-style university simulator</p>
+        <a href="#">Explore</a>
+      </div>
+      <div class="project-card">
+        <h2>Watch Studio</h2>
+        <p>Blender-based photo rendering for watches</p>
+        <a href="#">Gallery</a>
+      </div>
+      <div class="project-card">
+        <h2>Keyboard Showcase</h2>
+        <p>Personal portfolio of artisan keyboards</p>
+        <a href="#">See builds</a>
+      </div>
+      <div class="project-card">
+        <h2>Quackify</h2>
+        <p>YouTube to Spotify playlist tool</p>
+        <a href="#">Try it</a>
+      </div>
+    </section>
+
+    <!-- BACKDROP FOR EXPANSION EFFECT -->
+    <!-- FAKE EXPANDED CARD -->
+    <div class="expansion-backdrop" id="card-backdrop"></div>
+    <div class="project-modal" id="projectModal">
+      <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <a id="modalLink" href="#" target="_blank">Visit</a>
       </div>
     </div>
-  </body>    
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.project-card');
+    const backdrop = document.getElementById('card-backdrop');
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalLink = document.getElementById('modalLink');
+  
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        // Pull content from clicked card
+        modalTitle.textContent = card.querySelector('h2').textContent;
+        modalDesc.textContent = card.querySelector('p').textContent;
+        modalLink.href = card.querySelector('a').href;
+        modalLink.textContent = card.querySelector('a').textContent;
+  
+        // Show modal
+        backdrop.classList.add('active');
+        modal.classList.add('active');
+      });
+    });
+  
+    backdrop.addEventListener('click', () => {
+      backdrop.classList.remove('active');
+      modal.classList.remove('active');
+    });
+  
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        backdrop.classList.remove('active');
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+`  
+</body>
 </html>
