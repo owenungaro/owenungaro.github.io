@@ -195,3 +195,16 @@ body {
 .project-modal a:hover {
   border-color: #58a6ff;
 }
+
+.project-modal .modal-body {
+  color: #ccc;
+}
+
+.project-modal .modal-features li,
+.project-modal .modal-tech li {
+  margin-bottom: 0.5em;
+}
+
+.project-modal .modal-links .btn + .btn {
+  margin-left: 1rem;
+}
