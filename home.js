@@ -182,3 +182,11 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('resize', adjustContainerHeight);
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const overlay = document.getElementById('intro-overlay');
+    overlay.classList.add('hide');
+    overlay.addEventListener('transitionend', () => overlay.remove());
+  }, 10);
+});

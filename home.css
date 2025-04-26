@@ -385,3 +385,20 @@ html {
   font-size: 0.9vw;
   color: #777;
 }
+
+/* full-screen intro overlay */
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* same gradient you already use on .left */  
+  background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f);
+  z-index: 9999;
+  transition: transform 1s ease;
+}
+/* when we add .hide, it will slide completely off to the right */
+#intro-overlay.hide {
+  transform: translateX(-100%);
+}
