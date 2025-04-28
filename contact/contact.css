@@ -187,3 +187,26 @@ nav {
   background-image: url("../images/silver/star3.png");
   transform: translate(240%, -90%) rotate(11deg) scale(0.7);
 }
+/* .gothic-cross {
+  position: fixed;
+  top: 50%;
+  left: 80%;
+  width: 10vw;
+  height: 10vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  transform-origin: bottom center;
+  z-index: 5;
+} */
+
+.gothic-cross.state1 {
+  background-image: url("../images/silver/cross4.png");
+  transform: translate(-750%, 230%) scaleY(200%) scaleX(80%) rotate(0deg) scale(3);
+}
+
+
+.gothic-cross.state2 {
+  background-image: url("../images/silver/cross3.png");
+  transform: translate(50%, 150%) scaleY(160%) scaleX(80%) rotate(0deg) scale(3);
+}
