@@ -400,23 +400,34 @@ html {
   transform: translateX(-100%);
 }
 
-/* make sure the overlay is isolated so only the video blends */
 #intro-overlay {
   position: fixed;
   inset: 0;
   background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f);
-  isolation: isolate;        /* <-- contain the blend to this stack */
+  isolation: isolate;
   z-index: 9999;
 }
 
-/* center and blend the video so black “drops out” */
 #intro-video {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   max-width: 80vw; max-height: 80vh;
   object-fit: contain;
-  mix-blend-mode: screen;    /* <-- knocks out black */
-  background: transparent;   /* just in case */
+  mix-blend-mode: screen;
+  background: transparent;
   pointer-events: none;
+
+  mask-image: radial-gradient(
+    circle at center,
+    #fff 70%,
+    transparent 100%
+  );
+  mask-mode: alpha;
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    #fff 70%,
+    transparent 100%
+  );
+  -webkit-mask-mode: alpha;
 }
