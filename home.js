@@ -176,6 +176,8 @@ function adjustContainerHeight() {
 
 window.addEventListener('load', () => {
   setTimeout(adjustContainerHeight, 1000);
+  const introVideo = document.getElementById('intro-video');
+  introVideo.playbackRate = 0.7;
 });
 
 window.addEventListener('resize', adjustContainerHeight);
@@ -185,5 +187,6 @@ window.addEventListener('load', () => {
     const overlay = document.getElementById('intro-overlay');
     overlay.classList.add('hide');
     overlay.addEventListener('transitionend', () => overlay.remove());
-  }, 1000);
+  }, 3000);
 });
+
