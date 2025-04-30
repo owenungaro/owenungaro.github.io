@@ -140,3 +140,73 @@ nav {
   color: #888;
   transition: color 0.3s ease;
 }
+
+.crop-image {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.crop-image.state1 {
+  background-image: url("../images/silver/crop1.png");
+  transform: translate(-250%, 140%) rotate(22deg) scale(1);
+}
+
+.crop-image.state2 {
+  background-image: url("../images/silver/crop2.png");
+  transform: translate(-250%, 140%) rotate(6deg) scale(1);
+}
+
+.crop-image.state3 {
+  background-image: url("../images/silver/crop3.png");
+  transform: translate(-250%, 140%) rotate(-11deg) scale(1);
+}
+
+.star-image {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.star-image.state1 {
+  background-image: url("../images/silver/star2.png");
+  transform: translate(240%, -90%) rotate(-11deg) scale(0.7);
+}
+
+.star-image.state2 {
+  background-image: url("../images/silver/star3.png");
+  transform: translate(240%, -90%) rotate(11deg) scale(0.7);
+}
+/* .gothic-cross {
+  position: fixed;
+  top: 50%;
+  left: 80%;
+  width: 10vw;
+  height: 10vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  transform-origin: bottom center;
+  z-index: 5;
+} */
+
+.gothic-cross.state1 {
+  background-image: url("../images/silver/cross4.png");
+  transform: translate(-750%, 230%) scaleY(200%) scaleX(80%) rotate(0deg) scale(3);
+}
+
+
+.gothic-cross.state2 {
+  background-image: url("../images/silver/cross3.png");
+  transform: translate(50%, 150%) scaleY(160%) scaleX(80%) rotate(0deg) scale(3);
+}

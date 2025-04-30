@@ -20,7 +20,7 @@ async function main() {
     return;
   }
 
-  const specificRepos = ['KeyScraper', 'EventBuddy', 'SpotiSync', 'QuackTask'];
+  const specificRepos = ['KeyScraper', 'EventBuddy', 'SpotiSync', 'QuackTask', 'quantumrings-quantum-factorization-challenge-yquantum-2025'];
   const filtered = data.filter(repo => specificRepos.includes(repo.name));
   console.log(specificRepos);
   console.log(filtered);

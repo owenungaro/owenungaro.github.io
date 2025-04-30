@@ -14,7 +14,6 @@ rightColumn.addEventListener('mouseleave', () => {
   hoverDarkLayer.style.setProperty('--y', `-1000px`);
 });
 
-// GitHub Widget
 fetch('/repos.json')
   .then(res => res.json())
   .then(repos => {
@@ -52,7 +51,7 @@ fetch('/repos.json')
     
     const widgetStack = document.querySelector('.right .widget-stack');
     widgetStack.appendChild(container);
-    widgetStack.appendChild(spotifyWidget); // <- append Spotify after GitHub
+    widgetStack.appendChild(spotifyWidget);
 
     setInterval(() => {
       const topLeft = document.querySelector('.corner-img.top-right');
@@ -126,7 +125,6 @@ function updateSpotifyWidget() {
         durationEl.textContent = '—';
         progressBar.style.opacity = '0';
       
-        // ❗ Clear album art
         albumArt.innerHTML = '';
         albumArt.style.backgroundImage = '';
         albumArt.style.backgroundColor = 'transparent';
@@ -141,7 +139,6 @@ function updateSpotifyWidget() {
       artist.textContent = data.artist;
       progressBar.style.opacity = '1';
 
-      // Store track data and start animation
       currentTrack = {
         ...data,
         progress_ms: data.progress_ms,
@@ -162,9 +159,9 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
-updateSpotifyWidget(); // Initial data load
-setInterval(updateSpotifyWidget, 5000); // Refresh song info every 5 sec
-requestAnimationFrame(loop); // Start animation loop
+updateSpotifyWidget();
+setInterval(updateSpotifyWidget, 5000);
+requestAnimationFrame(loop);
 
 function adjustContainerHeight() {
   const widgetStack = document.querySelector('.widget-stack');
@@ -178,7 +175,15 @@ function adjustContainerHeight() {
 }
 
 window.addEventListener('load', () => {
-  setTimeout(adjustContainerHeight, 1000); // Delay to ensure widgets are loaded
+  setTimeout(adjustContainerHeight, 1000);
 });
 
 window.addEventListener('resize', adjustContainerHeight);
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const overlay = document.getElementById('intro-overlay');
+    overlay.classList.add('hide');
+    overlay.addEventListener('transitionend', () => overlay.remove());
+  }, 1000);
+});
