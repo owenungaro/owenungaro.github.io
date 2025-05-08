@@ -237,20 +237,20 @@ html, body {
 
 /* Top Right Corner */
 .corner-img.top-right {
-  top: 0;
-  right: 0;
+  top: 8vh;
+  right: 5vw;
 }
 
 /*State A*/
 .corner-img.top-right {
   background-image: url('./images/silver/cross1.png');
-  transform: translate(40%, -40%) rotate(-11deg) scale(1);
+  transform: rotate(-11deg);
 }
 
 /*State B*/
 .corner-img.top-right.alt-state {
   background-image: url('./images/silver/cross2.png');
-  transform: translate(40%, -40%) rotate(11deg) scale(1);
+  transform: rotate(11deg);
 }
 
 .spotify-widget {
@@ -386,48 +386,13 @@ html {
   color: #777;
 }
 
-#intro-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f);
-  z-index: 9999;
-  transition: transform 1s ease;
-}
-#intro-overlay.hide {
-  transform: translateX(-100%);
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-#intro-overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top left, #1c1c1c, #0f0f0f);
-  isolation: isolate;
-  z-index: 9999;
-}
-
-#intro-video {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 80vw; max-height: 80vh;
-  object-fit: contain;
-  mix-blend-mode: screen;
-  background: transparent;
-  pointer-events: none;
-
-  mask-image: radial-gradient(
-    circle at center,
-    #fff 70%,
-    transparent 100%
-  );
-  mask-mode: alpha;
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    #fff 70%,
-    transparent 100%
-  );
-  -webkit-mask-mode: alpha;
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
 }
