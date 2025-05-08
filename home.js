@@ -133,7 +133,7 @@ function updateSpotifyWidget() {
       const progressBar = document.getElementById('trackProgress');
 
       if (!data || !data.is_playing) {
-        title.textContent = 'Nothing playing';
+        title.textContent = 'Nothing';
         artist.textContent = '';
         elapsedEl.textContent = '—';
         durationEl.textContent = '—';
