@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redirecting...</title>
+  <title>Stripe Code Received</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    #code {
+      font-size: 2rem;
+      color: #333;
+      background-color: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Authorization Code</h1>
+  <p id="code">Loading...</p>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
+
     if (code) {
-      // Automatically open the app with the authorization code
-      window.location.href = "quackhackproject://stripe/oauth/callback?code=" + code;
+      document.getElementById("code").innerText = code;
     } else {
-      document.write("<p>No cose found.</p>");
+      document.getElementById("code").innerText = "No code found.";
     }
   </script>
-</head>
-<body>
-  <p>Redirecting to the app...</p>
 </body>
 </html>
