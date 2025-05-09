@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ou contact</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  <link rel="stylesheet" href="../nav.css" />
+  <link rel="stylesheet" href="contact.css" />
+
+  <style>
+    #nav-placeholder {
+      display: contents;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("../nav.html");
+    });
+  </script>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <h1>get in touch</h1>
+      <p>let's connect.</p>
+      <form class="contact-form" action="https://formspree.io/f/manelrpn" method="POST" novalidate>
+        <input type="text" name="name" placeholder="your name" required />
+        <input type="email" name="email" placeholder="your email" required />
+        <textarea name="message" rows="6" placeholder="your message" required></textarea>
+        <button type="submit">send message</button>
+      </form>
+    </div>
+    <div class="crop-image state1"></div>
+    <div class="star-image state1"></div>
+    <div class="gothic-cross state1"></div>
+    <div class="gothic-cross state2"></div>
+  </section>
+  <script>
+    const form = document.querySelector('.contact-form');
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('input-error');
+        input.placeholder = input.dataset.originalPlaceholder || '';
+      });
+
+      input.dataset.originalPlaceholder = input.placeholder;
+    });
+
+    form.addEventListener('submit', function (e) {
+      let hasError = false;
+
+      inputs.forEach(input => {
+        if(!input.value.trim()) {
+          hasError = true;
+          input.classList.add('input-error');
+          input.placeholder = 'This field is required';
+        }
+      });
+
+      if(hasError) {
+        e.preventDefault();
+        return;
+      }
+
+      setTimeout(() => {
+        form.reset();
+      }, 100);
+    });
+  </script>
+  <script src="contact.js"></script>
+</body>
+</html>

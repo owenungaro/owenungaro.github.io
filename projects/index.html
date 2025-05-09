@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ou projects</title>
+
+  <link rel="stylesheet" href="projects.css" />
+  <link rel="stylesheet" href="../nav.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  <style>#nav-placeholder { display: contents; }</style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("../nav.html");
+    });
+  </script>
+
+  <div class="projects-wrapper" id="projects-area">
+    <div class="dot-layer base"></div>
+    <div class="dot-layer hover-dark"></div>
+
+    <div class="projects-header">
+      <h1>projects</h1>
+      <p>a showcase of the things i've made.</p>
+    </div>
+
+    <section class="projects-grid">
+      <div class="project-card">
+        <h2>QuackTask</h2>
+        <p>Canvas Google Tasks Chrome extension</p>
+        <a href="#">View project</a>
+      </div>
+      <div class="project-card">
+        <h2>SpotiSync</h2>
+        <p>Youtube MP3 Converter into Spotify</p>
+        <a href="#">View project</a>
+      </div>
+      <div class="project-card">
+        <h2>KeyScraper</h2>
+        <p>GeekHack vendor forum scraper</p>
+        <a href="#">View project</a>
+      </div>
+      <div class="project-card">
+        <h2>EventBuddy</h2>
+        <p>BluePrint Discord calendar announcement bot</p>
+        <a href="#">View project</a>
+      </div>
+      <div class="project-card">
+        <h2>Billsplitter</h2>
+        <p>Stevens Hackathon project</p>
+        <a href="#">Open Github</a>
+      </div>
+      <div class="project-card">
+        <h2>Shors Algorithm - The Lion</h2>
+        <p>Yale Quantum Hackathon project</p>
+        <a href="#">Open Github</a>
+      </div>
+    </section>
+
+    <!-- BACKDROP FOR EXPANSION EFFECT -->
+    <!-- FAKE EXPANDED CARD -->
+    <div class="expansion-backdrop" id="card-backdrop"></div>
+    <div class="project-modal" id="projectModal">
+      <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <a id="modalLink" href="#" target="_blank">Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.project-card');
+    const backdrop = document.getElementById('card-backdrop');
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalLink = document.getElementById('modalLink');
+  
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        // Pull content from clicked card
+        modalTitle.textContent = card.querySelector('h2').textContent;
+        modalDesc.textContent = card.querySelector('p').textContent;
+        modalLink.href = card.querySelector('a').href;
+        modalLink.textContent = card.querySelector('a').textContent;
+  
+        // Show modal
+        backdrop.classList.add('active');
+        modal.classList.add('active');
+      });
+    });
+  
+    backdrop.addEventListener('click', () => {
+      backdrop.classList.remove('active');
+      modal.classList.remove('active');
+    });
+  
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        backdrop.classList.remove('active');
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+  <script src="projects.js"></script>
+</body>
+</html>

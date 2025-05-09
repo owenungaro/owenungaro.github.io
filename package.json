@@ -1,0 +1,12 @@
+{
+  "name": "owenungaro-site",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "license": "OJU",
+  "dependencies": {
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2",
+    "open": "^10.1.0"
+  }
+}

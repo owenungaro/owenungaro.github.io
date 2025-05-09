@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ou resume</title>
+    <link rel="stylesheet" href="resume.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="../nav.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+      #nav-placeholder {
+        display: contents;
+      }
+    </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+  <script>
+    $(function(){
+      $("#nav-placeholder").load("../nav.html");
+    });
+  </script>
+  <embed src="resume.pdf" alt="resume" height="100%" width="100%">
+</body>
+</html>

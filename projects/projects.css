@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  overflow-x: hidden;
+  color: #1a1a1a;
+}
+
+.projects-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 6vh 6vw 12vh;
+  overflow: hidden;
+}
+
+.dot-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 2vh 2vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.base {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%23ccc'/%3E%3C/svg%3E");
+}
+
+.hover-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='1.2' fill='%23222'/%3E%3C/svg%3E");
+  opacity: 1;
+  mask-image: radial-gradient(circle at var(--x, -1000px) var(--y, -1000px), rgba(0, 0, 0, 1) 0%, transparent 10vw);
+  -webkit-mask-image: radial-gradient(circle at var(--x, -1000px) var(--y, -1000px), rgba(0, 0, 0, 1) 0%, transparent 10vw);
+  mask-mode: alpha;
+}
+
+.projects-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 6vh;
+  padding: 0;
+  max-width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  background: none;
+  border: none;
+}
+
+.projects-header h1 {
+  font-size: 3.4vw;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 1vh;
+  letter-spacing: -0.03vw;
+}
+
+.projects-header p {
+  font-size: 1.15vw;
+  color: #000000;
+  max-width: 90%;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.projects-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22vw, 1fr));
+  gap: 2.5vw;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: #1c1c1c;
+  border: 0.1vh solid rgba(255, 255, 255, 0.05);
+  border-radius: 1.2vw;
+  padding: 2.5vw 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-0.4vh);
+}
+
+.project-card h2 {
+  font-size: 1.5vw;
+  color: #ffffff;
+  margin-bottom: 1vh;
+  font-weight: 600;
+}
+
+.project-card p {
+  font-size: 1.05vw;
+  color: #cccccc;
+  margin-bottom: 2vh;
+  line-height: 1.5;
+}
+
+.project-card a {
+  font-size: 1vw;
+  text-decoration: none;
+  color: #58a6ff;
+  font-weight: 600;
+  align-self: flex-start;
+  border-bottom: 0.1vh solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.project-card a:hover {
+  border-color: #58a6ff;
+}
+
+/* BACKDROP */
+.expansion-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.expansion-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* MODAL CONTAINER */
+.project-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: #1c1c1c;
+  border-radius: 1.5vw;
+  width: 70vw;
+  max-width: 800px;
+  max-height: 75vh;
+  padding: 4vw;
+  box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.75, 0.25, 1);
+  overflow-y: auto;
+}
+
+.project-modal.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.project-modal h2 {
+  font-size: 2.4vw;
+  color: white;
+  margin-bottom: 1vh;
+}
+
+.project-modal p {
+  font-size: 1.2vw;
+  color: #ccc;
+  margin-bottom: 3vh;
+  line-height: 1.8;
+}
+
+.project-modal a {
+  font-size: 1.2vw;
+  color: #58a6ff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 0.1vh solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.project-modal a:hover {
+  border-color: #58a6ff;
+}
+
+.project-modal .modal-body {
+  color: #ccc;
+}
+
+.project-modal .modal-features li,
+.project-modal .modal-tech li {
+  margin-bottom: 0.5em;
+}
+
+.project-modal .modal-links .btn + .btn {
+  margin-left: 1rem;
+}
