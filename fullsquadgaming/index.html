@@ -2,46 +2,242 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bot Dashboard</title>
+  <title>Full Squad Gaming Bot Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="dashboard">
     
     <aside class="sidebar">
-      <h2>Server Settings</h2>
-      <label for="guild">Server ID:</label>
-      <input id="guild" type="text" value="1161767164286603264" placeholder="Enter guild ID">
-      <button id="load">Load Users</button>
+      <div class="sidebar-header">
+        <h2>Server Settings</h2>
+        <div class="status-indicator" id="serverStatus">
+          <span class="status-dot"></span>
+          <span class="status-text">Disconnected</span>
+        </div>
+      </div>
+      
+      <div class="sidebar-content">
+        <div class="input-group">
+          <label for="guild">Server ID:</label>
+          <input id="guild" type="text" value="1161767164286603264" placeholder="Enter guild ID">
+        </div>
+        <button id="load" class="primary-btn">
+          <span class="btn-icon">👥</span>
+          Load Users
+        </button>
+      </div>
+      
+      <div class="workflow-progress">
+        <h3>Workflow Progress</h3>
+        <div class="progress-steps">
+          <div class="step" id="step1-indicator">
+            <div class="step-number">1</div>
+            <div class="step-label">Load Users</div>
+          </div>
+          <div class="step" id="step2-indicator">
+            <div class="step-number">2</div>
+            <div class="step-label">Select Users</div>
+          </div>
+          <div class="step" id="step3-indicator">
+            <div class="step-number">3</div>
+            <div class="step-label">Prompting</div>
+          </div>
+          <div class="step" id="step4-indicator">
+            <div class="step-number">4</div>
+            <div class="step-label">Execute</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="history-section">
+        <button class="history-btn" id="historyBtn">
+          <span class="btn-icon">📜</span>
+          Execution History
+        </button>
+      </div>
     </aside>
     
     <main class="main-panel">
-      <section class="user-selection">
-        <h2>Users</h2>
-        <input id="userSearch" type="text" placeholder="Search users..." class="search-bar">
-        <div class="user-widget" id="users">
-        </div>        
-      </section>
+      <div class="workflow-container">
+        <!-- Stage 1: User Selection -->
+        <section class="workflow-stage active" id="stage1">
+          <div class="stage-header">
+            <h2>👥 User Selection</h2>
+            <p>Load and select users from your Discord server</p>
+          </div>
+          <div class="stage-content">
+            <section class="user-selection">
+              <div class="user-selection-header">
+                <h3>Server Members</h3>
+                <div class="user-count" id="userCount">0 users loaded</div>
+              </div>
+              <input id="userSearch" type="text" placeholder="🔍 Search users..." class="search-bar">
+              <div class="user-widget" id="users">
+                <div class="empty-state">
+                  <div class="empty-icon">👥</div>
+                  <p>Click "Load Users" to get started</p>
+                </div>
+              </div>
+              <div class="selection-summary" id="selectionSummary">
+                <span class="selected-count">0</span> users selected
+              </div>
+            </section>
+            <div class="continue-button-container hidden" id="continueToPromptingContainer">
+              <button id="continueToPrompting" class="nav-btn next-btn">
+                Continue to Prompting
+                <span class="btn-icon">→</span>
+              </button>
+            </div>
+          </div>
+        </section>
 
-      <section id="step2" class="inputs">
-        <h2>Inputs</h2>
-        <label for="input1">Input 1:</label>
-        <input id="input1" type="text">
-        <label for="input2">Input 2:</label>
-        <input id="input2" type="text">
-      </section>
+        <!-- Stage 2: Prompting -->
+        <section class="workflow-stage" id="stage2">
+          <div class="stage-header">
+            <h2>📝 Prompting</h2>
+            <p>Set up your bot messages and parameters</p>
+          </div>
+          <div class="stage-content">
+            <section class="inputs">
+              <h3>Message Configuration</h3>
+              <div class="input-group">
+                <label for="input1">📝 Message A:</label>
+                <input id="input1" type="text" placeholder="Enter your first message...">
+              </div>
+              <div class="input-group">
+                <label for="input2">📝 Message B:</label>
+                <input id="input2" type="text" placeholder="Enter your second message...">
+              </div>
+              <div class="stage-navigation">
+                <button id="backToUsers" class="nav-btn back-btn">
+                  <span class="btn-icon">←</span>
+                  Back to Users
+                </button>
+                <button id="nextToRandom" class="nav-btn next-btn">
+                  Next: Random Selection
+                  <span class="btn-icon">→</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
 
-      <section id="step3" class="actions">
-        <button id="chooseRandom" disabled>Choose Random User</button>
-      </section>
+        <!-- Stage 3: Random Selection -->
+        <section class="workflow-stage" id="stage3">
+          <div class="stage-header">
+            <h2>🎲 Random Selection</h2>
+            <p>Choose a random user from your selection</p>
+          </div>
+          <div class="stage-content">
+            <section class="actions">
+              <div class="action-card">
+                <h3>Ready to Select</h3>
+                <p>Click below to randomly select a user from your chosen members</p>
+                <button id="chooseRandom" class="action-btn" disabled>
+                  <span class="btn-icon">🎲</span>
+                  Choose Random User
+                </button>
+                
+                <!-- Selected User Display (hidden initially) -->
+                <div id="selectedUserPreview" class="selected-user-preview hidden">
+                  <div class="selected-user-preview-content">
+                    <h4>Selected User</h4>
+                    <div class="result-user">
+                      <div class="user-avatar" id="selectedUserPreviewAvatar"></div>
+                      <span id="selectedUserPreviewName" class="user-name">No user selected</span>
+                    </div>
+                    <p class="preview-hint">Click "Choose Random User" again to select a different user</p>
+                  </div>
+                </div>
+              </div>
+              <div class="stage-navigation">
+                <button id="backToPrompting" class="nav-btn back-btn">
+                  <span class="btn-icon">←</span>
+                  Back to Prompting
+                </button>
+                <button id="nextToConfirmation" class="nav-btn next-btn hidden">
+                  Next: Confirmation
+                  <span class="btn-icon">→</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </section>
 
-      <section id="result" class="result">
-        <strong>Selected User:</strong>
-        <span id="selectedUser"></span>
-        <button id="confirmBtn" disabled>Confirm</button>
-      </section>
-
+        <!-- Stage 4: Results & Confirmation -->
+        <section class="workflow-stage" id="stage4">
+          <div class="stage-header">
+            <h2>✅ Confirmation</h2>
+            <p>Review and confirm your selection</p>
+          </div>
+          <div class="stage-content">
+            <section class="result">
+              <div class="result-card">
+                <div class="result-header">
+                  <h3>Selected User</h3>
+                  <div class="result-user" id="selectedUserDisplay">
+                    <div class="user-avatar" id="selectedUserAvatar"></div>
+                    <span id="selectedUser" class="user-name">No user selected</span>
+                  </div>
+                </div>
+                <div class="result-actions">
+                  <button id="confirmBtn" class="confirm-btn" disabled>
+                    <span class="btn-icon">🚀</span>
+                    Send Messages
+                  </button>
+                </div>
+                <div class="stage-navigation">
+                  <button id="backToRandom" class="nav-btn back-btn">
+                    <span class="btn-icon">←</span>
+                    Back to Random Selection
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
     </main>
+  </div>
+
+  <!-- Execution History Popup Modal -->
+  <div id="historyModal" class="history-modal">
+    <div class="history-modal-overlay"></div>
+    <div class="history-modal-content">
+      <div class="history-modal-header">
+        <h2>📜 Execution History</h2>
+        <button class="history-modal-close" id="historyModalClose">×</button>
+      </div>
+      <div class="history-modal-body">
+        <div class="history-list" id="historyList">
+          <div class="history-empty">
+            <p>No executions yet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Animation Overlay -->
+  <div id="successOverlay" class="success-overlay">
+    <div class="success-content">
+      <div class="success-icon">
+        <div class="crown-container">
+          <img src="../images/silver/crown.png" alt="Crown" class="crown-image">
+        </div>
+      </div>
+      <h2 class="success-title">Messages Sent!</h2>
+      <p class="success-message">Your Discord messages have been delivered successfully.</p>
+      <div class="success-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
